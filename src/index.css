@@ -36,6 +36,15 @@ html {
   overflow-x: clip;
 }
 
+/* Smooth scroll para âncoras (#section), respeitando prefers-reduced-motion */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+    /* Header fixo: evita que o título da seção fique escondido atrás do topo */
+    scroll-padding-top: 5rem;
+  }
+}
+
 body {
   margin: 0;
 }

@@ -2,7 +2,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 min-w-0 max-w-full bg-slate-100/80 backdrop-blur-lg border-b border-emerald-700/40">
       <div className="w-full min-w-0 max-w-full flex justify-between items-center py-2 pl-5 pr-5">
-        <img className="ml-5 h-15" src="/LogoPuro.svg" alt="PUROSEG" />
+        <img className="ml-5 h-12" src="/LogoPuro.svg" alt="PUROSEG" />
         <nav className="hidden md:flex items-center space-x-10">
           <a className="text-sm font-semibold text-slate-900/70 hover:text-emerald-700 transition-colors uppercase tracking-widest" href="#documents">Documentos</a>
           <a className="text-sm font-semibold text-slate-900/70 hover:text-emerald-700 transition-colors uppercase tracking-widest" href="#training">Treinamentos</a>

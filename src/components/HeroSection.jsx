@@ -4,7 +4,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0">
         <img className="w-full h-full object-cover opacity-60" src="/Fundo.jpg" alt="" />
         {/* LEFT → RIGHT fade */}
-        <div className="absolute inset-0 bg-linear-to-r from-slate-100 via-slate-100/90 to-transparent"></div>
+        <div className="absolute inset-0 bg-linear-to-r from-slate-100 via-slate-100/70 to-transparent"></div>
       </div>
 
       <div className="absolute top-20 left-5 z-20">

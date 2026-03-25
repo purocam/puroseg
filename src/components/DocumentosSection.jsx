@@ -61,7 +61,7 @@ const DOCUMENT_ITEMS = [
 
 export default function DocumentosSection() {
   return (
-    <section className="py-15 bg-slate-100" id="documents">
+    <section className="py-5 bg-slate-100" id="documents">
       <div className="w-full min-w-0 max-w-full box-border px-5">
         <div className="flex flex-col lg:flex-row justify-between items-start mb-10 gap-10">
           <div className="max-w-full">

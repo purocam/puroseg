@@ -13,11 +13,11 @@ const TREINAMENTOS_IITEMS = [
     description: 'Capacitação introdutória sobre disposições gerais de segurança e saúde no trabalho.',
     tag: 'Treinamento',
     accentColor: '#047857',
-    image: '/nr01.jpg',
+    image: '/nrs/nr1.jpeg',
     imageAlt: 'Treinamento de integração em segurança do trabalho',
   },
   {
-    title: 'CIPA (NR 05)',
+    title: 'NR 05 - CIPA',
     description: 'Formação e capacitação da CIPA para prevenção de acidentes e promoção da saúde ocupacional.',
     tag: 'Treinamento',
     accentColor: '#047857',
@@ -25,11 +25,11 @@ const TREINAMENTOS_IITEMS = [
     imageAlt: 'Equipe em treinamento de CIPA',
   },
   {
-    title: 'NR 10',
+    title: 'NR 10 - Instalações Elétricas',
     description: 'Capacitação para segurança em instalações e serviços em eletricidade.',
     tag: 'Treinamento',
     accentColor: '#047857',
-    image: '/nr10.jpg',
+    image: '/nrs/nr10.jpg',
     imageAlt: 'Trabalho com eletricidade segura',
   },
   {
@@ -85,7 +85,7 @@ const TREINAMENTOS_IITEMS = [
     description: 'Capacitação para trabalho com inflamáveis e combustíveis.',
     tag: 'Treinamento',
     accentColor: '#047857',
-    image: '/nr20.jpg',
+    image: '/nrs/nr20.jpeg',
     imageAlt: 'Manuseio de combustíveis',
   },
   {
@@ -117,7 +117,7 @@ const TREINAMENTOS_IITEMS = [
     description: 'Capacitação para trabalho seguro em espaços confinados.',
     tag: 'Treinamento',
     accentColor: '#047857',
-    image: '/nr33.jpg',
+    image: '/nrs/nr33.jpg',
     imageAlt: 'Trabalho em espaço confinado',
   },
   {
@@ -133,7 +133,7 @@ const TREINAMENTOS_IITEMS = [
     description: 'Capacitação para execução de atividades em altura com segurança.',
     tag: 'Treinamento',
     accentColor: '#047857',
-    image: '/nr35.jpg',
+    image: '/nrs/nr35.jpg',
     imageAlt: 'Trabalho em altura com EPI',
   },
   {
@@ -144,14 +144,14 @@ const TREINAMENTOS_IITEMS = [
     image: 'nrs/ntcb34.jpg',
     imageAlt: 'Equipe de brigada de incêndio',
   },
-  {
-    title: 'Direção Defensiva',
-    description: 'Capacitação para condução segura e prevenção de acidentes no trânsito.',
-    tag: 'Treinamento',
-    accentColor: '#047857',
-    image: '/direcao.jpg',
-    imageAlt: 'Motorista dirigindo com segurança',
-  },
+  // {
+  //   title: 'Direção Defensiva',
+  //   description: 'Capacitação para condução segura e prevenção de acidentes no trânsito.',
+  //   tag: 'Treinamento',
+  //   accentColor: '#047857',
+  //   image: '/direcao.jpg',
+  //   imageAlt: 'Motorista dirigindo com segurança',
+  // },
   {
     title: 'Responsabilidade Civil e Criminal',
     description: 'Treinamento sobre responsabilidades legais relacionadas à segurança do trabalho.',
@@ -172,8 +172,9 @@ export default function TreinamentosSection() {
             className="h-full w-full object-cover opacity-60"
             src="/Fundo2.jpg"
           />
-          <div className="absolute inset-0 bg-linear-to-b from-slate-100 via-slate-100/5 to-transparent" />
-          <div className="absolute inset-0 bg-linear-to-t from-slate-100 via-slate-100/5 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-b from-slate-100 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-slate-100 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-l from-slate-100 via-slate-100/60 to-transparent" />
         </div>
 
         <div className="relative z-10 box-border flex w-full min-w-0 max-w-full justify-end px-5">
@@ -186,7 +187,7 @@ export default function TreinamentosSection() {
         </div>
       </section>
 
-      <section className="py-32 bg-slate-100" id="training">
+      <section className="py-5 bg-slate-100" id="training">
         <div className="w-full min-w-0 max-w-full box-border px-5">
           <div className="mb-10">
             <h2 className="font-black text-3xl md:text-4xl text-start pl-4 text-slate-900 uppercase tracking-tight border-l-4 border-emerald-700">
