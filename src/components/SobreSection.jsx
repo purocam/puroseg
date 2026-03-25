@@ -4,11 +4,12 @@ const LOGO_URL =
 export default function SobreSection() {
   return (
     <section className="py-32 bg-slate-100 overflow-x-hidden" id="about">
-      <div className="w-full">
+      <div className="w-full ml-5">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
           <div className="lg:col-span-6 relative">
-            <div className="relative z-10 bg-white p-16 editorial-shadow rounded-sm border border-emerald-700/5">
+            <div className="relative z-10 bg-white p-16 mr-10 md:mr-0 editorial-shadow rounded-sm border border-emerald-700/5">
               <img alt="PUROSEG Logo" className="w-64 h-auto mx-auto mb-12 opacity-80" src={LOGO_URL} />
+              {/* <img alt="PUROSEG Logo" className="w-64 h-auto mx-auto mb-12 opacity-10" src="/favicon.svg" /> */}
               <div className="space-y-8 text-slate-600 leading-relaxed text-lg">
                 <p>
                   A PUROSEG nasceu da necessidade de elevating os padrões de segurança no ambiente industrial brasileiro. Não entregamos apenas laudos; entregamos tranquilidade estratégica para empresas que buscam alta performance.

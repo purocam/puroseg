@@ -21,7 +21,7 @@ const TREINAMENTOS_IITEMS = [
     description: 'Formação e capacitação da CIPA para prevenção de acidentes e promoção da saúde ocupacional.',
     tag: 'Treinamento',
     accentColor: '#047857',
-    image: '/cipa.jpg',
+    image: '/nrs/nr5.jpeg',
     imageAlt: 'Equipe em treinamento de CIPA',
   },
   {
@@ -61,7 +61,7 @@ const TREINAMENTOS_IITEMS = [
     description: 'Capacitação em segurança no trabalho com máquinas e equipamentos.',
     tag: 'Treinamento',
     accentColor: '#047857',
-    image: '/nr12.jpg',
+    image: '/nrs/nr12.jpeg',
     imageAlt: 'Máquinas industriais com segurança',
   },
   {
@@ -69,7 +69,7 @@ const TREINAMENTOS_IITEMS = [
     description: 'Integração de segurança para trabalhadores da construção civil.',
     tag: 'Treinamento',
     accentColor: '#047857',
-    image: '/nr18.jpg',
+    image: '/nrs/nr18.jpeg',
     imageAlt: 'Treinamento em obra',
   },
   {
@@ -89,19 +89,19 @@ const TREINAMENTOS_IITEMS = [
     imageAlt: 'Manuseio de combustíveis',
   },
   {
-    title: 'NR 31.12',
-    description: 'Capacitação em segurança no trabalho rural.',
+    title: 'NR 31.12 - Segurança Agrícola',
+    description: 'Capacitação em segurança no trabalho em máquinas e implementos agrícolas.',
     tag: 'Treinamento',
     accentColor: '#047857',
-    image: '/nr31.jpg',
+    image: '/nrs/nr3112.jpg',
     imageAlt: 'Trabalho rural seguro',
   },
   {
-    title: 'NR 31.12.47',
-    description: 'Capacitação em segurança no trabalho rural.',
+    title: 'NR 31.12.47 - Manutenção Agrícola',
+    description: 'Capacitação em segurança na manutenção de máquinas agrícolas.',
     tag: 'Treinamento',
     accentColor: '#047857',
-    image: '/nr31.jpg',
+    image: '/nrs/nr311214.jpg',
     imageAlt: 'Trabalho rural seguro',
   },
   {
@@ -157,7 +157,7 @@ const TREINAMENTOS_IITEMS = [
     description: 'Treinamento sobre responsabilidades legais relacionadas à segurança do trabalho.',
     tag: 'Treinamento',
     accentColor: '#047857',
-    image: '/responsabilidade.jpg',
+    image: '/nrs/leis.jpeg',
     imageAlt: 'Treinamento jurídico corporativo',
   }
 ]
@@ -259,8 +259,8 @@ export default function TreinamentosSection() {
                       fontWeight: 700,
                       letterSpacing: '0.08em',
                       textTransform: 'uppercase',
-                      bgcolor: 'rgba(37, 99, 235, 0.12)',
-                      color: '#2563eb',
+                      bgcolor: 'rgba(16, 185, 129, 0.12)',
+                      color: '#047857',
                     }}
                   />
                   <OpenInNewIcon sx={{ fontSize: 22, color: 'rgba(37, 99, 235, 0.35)' }} aria-hidden />

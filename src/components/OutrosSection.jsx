@@ -84,18 +84,6 @@ const OUTROS_ITEMS = [
 export default function OutrosSection() {
   return (
     <>
-    {/* <section className="relative h-150 flex items-center justify-end overflow-hidden bg-slate-100">
-        <div className="absolute inset-0 z-0">
-            <img
-                alt=""
-                className="h-full w-full object-cover opacity-60"
-                src="/Fundo3.jpeg"
-            />
-            <div className="absolute inset-0 bg-linear-to-b from-slate-100 via-slate-100/5 to-transparent" />
-            <div className="absolute inset-0 bg-linear-to-t from-slate-100 via-slate-100/5 to-transparent" />
-        </div>
-    </section> */}
-
     <section className="py-10 bg-slate-100" id="outros">
         <div className="w-full min-w-0 max-w-full box-border px-5">
           <div className="mb-10">
