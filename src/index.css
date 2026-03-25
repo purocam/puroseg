@@ -32,13 +32,18 @@
 
 
 
+html {
+  overflow-x: clip;
+}
+
 body {
   margin: 0;
 }
 
 #root {
   width: 100%;
-  max-width: none;
+  max-width: 100%;
+  min-width: 0;
   margin: 0;
   text-align: center;
   border-inline: none;
