@@ -16,14 +16,14 @@ export default function HeroSection() {
 
       <div className="w-full relative z-10">
         <div className="ml-5 max-w-3xl">
-          <h1 className="text-slate-900 text-left font-bold text-5xl md:text-8xl tracking-tighter mb-10 break-words">
+          <h1 className="text-slate-900 text-left font-bold text-5xl md:text-8xl tracking-tighter mb-10 wrap-break-words">
             Especialista em Segurança do Trabalho: Assessoria e Treinamentos
           </h1>
           <div className="flex flex-wrap gap-5">
             <button className="bg-emerald-700 text-white px-8 py-3 rounded-lg text-sm font-bold tracking-widest uppercase hover:bg-emerald-600 hover:translate-y-[-0.5] transition-all shadow-lg shadow-neutral-900/50">
               Nossos serviços
             </button>
-            <button className="border-2 border-emerald-700/20 text-emerald-700 rounded-lg px-8 py-3 text-sm font-bold tracking-widest uppercase hover:bg-emerald-100 transition-all shadow-lg shadow-neutral-900/50">
+            <button className="bg-slate-50 border-2 border-emerald-700/20 text-emerald-700 rounded-lg px-8 py-3 text-sm font-bold tracking-widest uppercase hover:bg-emerald-100 transition-all shadow-lg shadow-neutral-900/50">
               Sobre nós
             </button>
           </div>

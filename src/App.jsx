@@ -3,6 +3,7 @@ import Header from './components/Header'
 import HeroSection from './components/HeroSection'
 import DocumentosSection from './components/DocumentosSection'
 import TreinamentosSection from './components/TreinamentosSection'
+import OutrosSection from './components/OutrosSection'
 import SobreSection from './components/SobreSection'
 import ContatoSection from './components/ContatoSection'
 import ContactSpeedDial from './components/ContactSpeedDial'
@@ -16,6 +17,7 @@ export default function App() {
         <HeroSection />
         <DocumentosSection />
         <TreinamentosSection />
+        <OutrosSection />
         <SobreSection />
         <ContatoSection />
       </main>
