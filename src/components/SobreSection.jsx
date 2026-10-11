@@ -1,49 +1,61 @@
-const LOGO_URL =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuANiamL51rIC8Fxi5DYMe_p35lrLQhVlV44fJ_dIy8DjWxQBqxZEHsvDcVnKqmdYLfKD7WIQM9-zs6RW6ZPS0aLs8fMCz9V9QiGbiE7G2wV10ciCaaoJshU3vTFy_M8SNiUB6_BBlHcZG_pCYnOt7OPaU-1bepVTTjg7bXN2PmUrYmfykjJTMtbISEgI3UtOUypn5C5OzF5H9_cn4rB6fEGWhoCaiQpeTV7DE3gHzS0-VAaJKLpBVJJ1gugInzBXSzNR3OskH1WrkE';
+import SectionHeader from './ui/SectionHeader';
+
+const PILLARS = [
+  {
+    icon: 'gavel',
+    title: 'Rigor Técnico',
+    description:
+      'A PUROSEG eleva os padrões de segurança no ambiente industrial brasileiro. Não entregamos apenas laudos; entregamos tranquilidade estratégica.',
+  },
+  {
+    icon: 'menu_book',
+    title: 'Base Jurídica',
+    description:
+      'Nossa metodologia combina conhecimento jurídico atualizado com uma visão prática das operações de campo.',
+  },
+  {
+    icon: 'engineering',
+    title: 'Soluções Aplicáveis',
+    description:
+      'Garantimos soluções aplicáveis para empresas que buscam alta performance e conformidade contínua.',
+  },
+];
+
+const STATS = [
+  { value: '150+', label: 'Clientes Atendidos' },
+  { value: '10.000+', label: 'Vidas Treinadas' },
+  { value: '100%', label: 'Conformidade' },
+];
 
 export default function SobreSection() {
   return (
-    <section className="py-32 bg-slate-100 overflow-x-hidden" id="about">
-      <div className="w-full ml-5">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
-          <div className="lg:col-span-6 relative">
-            <div className="relative z-10 bg-white p-16 mr-10 md:mr-0 editorial-shadow rounded-sm border border-emerald-700/5">
-              <img alt="PUROSEG Logo" className="w-64 h-auto mx-auto mb-12 opacity-80" src={LOGO_URL} />
-              {/* <img alt="PUROSEG Logo" className="w-64 h-auto mx-auto mb-12 opacity-10" src="/favicon.svg" /> */}
-              <div className="space-y-8 text-slate-600 leading-relaxed text-lg">
-                <p>
-                  A PUROSEG nasceu da necessidade de elevating os padrões de segurança no ambiente industrial brasileiro. Não entregamos apenas laudos; entregamos tranquilidade estratégica para empresas que buscam alta performance.
-                </p>
-                <p>
-                  Nossa metodologia combina rigor técnico, conhecimento jurídico atualizado e uma visão prática das operações de campo, garantindo soluções aplicáveis.
-                </p>
+    <section className="bg-surface py-14 md:py-20" id="about">
+      <div className="mx-auto w-full max-w-7xl px-5">
+        <SectionHeader
+          eyebrow="Nossa Essência"
+          title="Referência Industrial em Consultoria de Segurança"
+          description="Metodologia integrada para conformidade normativa, gestão de riscos e capacitação de equipes."
+        />
+
+        <div className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-3">
+          {PILLARS.map((pillar) => (
+            <article
+              key={pillar.title}
+              className="rounded-2xl border border-outline-variant/40 bg-white p-6 text-left shadow-sm"
+            >
+              <div className="mb-2 flex items-center gap-3 md:mb-0 md:block">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary md:mb-4 md:h-12 md:w-12">
+                  <span className="material-symbols-outlined text-[24px] md:text-[26px]">
+                    {pillar.icon}
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-on-surface md:mb-2">{pillar.title}</h3>
               </div>
-            </div>
-            <div className="absolute -top-10 -left-10 w-40 h-40 bg-emerald-100/50 -z-10 rounded-full blur-3xl"></div>
-          </div>
-          <div className="lg:col-span-6">
-            <span className="text-emerald-700 font-bold tracking-widest uppercase text-sm mb-6 flex items-center gap-3">
-              <span className="w-10 h-px bg-emerald-700"></span> Nossa Essência
-            </span>
-            <h2 className="font-black text-4xl md:text-6xl text-slate-900 uppercase mb-12 leading-tight">
-              Referência Industrial em Consultoria de Segurança
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-10">
-              <div className="border-b border-emerald-700/10 pb-6">
-                <p className="text-4xl font-black text-emerald-700 mb-1">150+</p>
-                <p className="text-[10px] uppercase font-bold tracking-[0.2em] text-slate-600">Clientes Atendidos</p>
-              </div>
-              <div className="border-b border-emerald-700/10 pb-6">
-                <p className="text-4xl font-black text-emerald-700 mb-1">15k+</p>
-                <p className="text-[10px] uppercase font-bold tracking-[0.2em] text-slate-600">Vidas Treinadas</p>
-              </div>
-              <div className="border-b border-emerald-700/10 pb-6">
-                <p className="text-4xl font-black text-emerald-700 mb-1">100%</p>
-                <p className="text-[10px] uppercase font-bold tracking-[0.2em] text-slate-600">Conformidade</p>
-              </div>
-            </div>
-          </div>
+              <p className="text-sm leading-6 text-on-surface-variant">{pillar.description}</p>
+            </article>
+          ))}
         </div>
+
       </div>
     </section>
   );

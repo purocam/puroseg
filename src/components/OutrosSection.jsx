@@ -1,190 +1,176 @@
-import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import Box from '@mui/material/Box';
-import Chip from '@mui/material/Chip';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useState } from 'react';
 
 const OUTROS_ITEMS = [
   {
     title: 'Gestão eSocial SST',
-    description: 'Envio e monitoramento dos eventos de SST (S-2210, S-2220 e S-2240) garantindo conformidade legal.',
+    description:
+      'Envio e monitoramento dos eventos de SST (S-2210, S-2220 e S-2240) garantindo conformidade legal.',
     tag: 'Digital',
-    accentColor: '#047857',
   },
   {
     title: 'Implantação de CIPA',
     description: 'Estruturação completa da CIPA e CIPATR.',
     tag: 'Implantação',
-    accentColor: '#047857',
   },
   {
     title: 'Projeto de Incêndio',
     description: 'Desenvolvimento e acompanhamento de projetos de prevenção e combate a incêndios.',
     tag: 'Implantação',
-    accentColor: '#047857',
   },
   {
     title: 'Mapeamento e Análise de Riscos',
-    description: 'Elaboração de mapas de risco e identificação, avaliação e recomendações para mitigação de riscos ocupacionais.',
+    description:
+      'Elaboração de mapas de risco e identificação, avaliação e recomendações para mitigação de riscos ocupacionais.',
     tag: 'Consultoria',
-    accentColor: '#047857',
   },
   {
     title: 'Inspeção de Segurança',
     description: 'Inspeções periódicas nas áreas para garantir conformidade com normas de segurança.',
     tag: 'Consultoria',
-    accentColor: '#047857',
   },
   {
     title: 'DDS - Diálogo Diário de Segurança',
     description: 'Implantação de práticas de DDS para prevenção de acidentes.',
     tag: 'Consultoria',
-    accentColor: '#047857',
   },
   {
     title: 'Sinalização de Segurança',
     description: 'Implantação e orientação de sinalização de segurança conforme normas vigentes.',
     tag: 'Implantação',
-    accentColor: '#047857',
   },
   {
     title: 'Avaliações Quantitativas',
     description: 'Medição de agentes físicos e químicos no ambiente de trabalho.',
     tag: 'Consultoria',
-    accentColor: '#047857',
   },
   {
     title: 'Gestão de Espaço Confinado',
     description: 'Implantação completa conforme NR 33, incluindo procedimentos e segurança.',
     tag: 'Implantação',
-    accentColor: '#047857',
   },
   {
     title: 'Gestão de Trabalho em Altura',
     description: 'Implantação de processos e controles conforme NR 35.',
     tag: 'Implantação',
-    accentColor: '#047857',
   },
   {
     title: 'Estatística de Acidentes',
     description: 'Implantação de controle e análise de indicadores de acidentes.',
     tag: 'Implantação',
-    accentColor: '#047857',
   },
   {
     title: 'Normas e Procedimentos',
     description: 'Elaboração e implantação de normas internas de segurança do trabalho.',
     tag: 'Implantação',
-    accentColor: '#047857',
-  }
-]
+  },
+];
+
+const IMAGE_MASK = {
+  WebkitMaskImage: [
+    'linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.2) 12%, rgba(0,0,0,0.55) 38%, black 62%, black 100%)',
+    'linear-gradient(180deg, transparent 0%, black 8%, black 92%, transparent 100%)',
+  ].join(', '),
+  maskImage: [
+    'linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.2) 12%, rgba(0,0,0,0.55) 38%, black 62%, black 100%)',
+    'linear-gradient(180deg, transparent 0%, black 8%, black 92%, transparent 100%)',
+  ].join(', '),
+  WebkitMaskComposite: 'source-in',
+  maskComposite: 'intersect',
+};
+
+function OutrosExpandableItem({ item, expanded, onToggle }) {
+  return (
+    <article
+      className={`overflow-hidden rounded-2xl border bg-white shadow-sm transition-all ${
+        expanded
+          ? 'border-primary/35 shadow-md'
+          : 'border-outline-variant/40 hover:border-primary/25'
+      }`}
+    >
+      <button
+        type="button"
+        onClick={onToggle}
+        className="flex w-full items-center justify-between gap-3 px-4 py-3.5 text-left"
+        aria-expanded={expanded}
+      >
+        <div className="min-w-0">
+          <p className="truncate text-sm font-bold tracking-tight text-on-surface uppercase md:text-[15px]">
+            {item.title}
+          </p>
+        </div>
+        <div className="flex shrink-0 items-center gap-2">
+          <span className="rounded-md bg-primary/10 px-2 py-1 text-[10px] font-bold tracking-[0.08em] text-primary uppercase">
+            {item.tag}
+          </span>
+          <span
+            className={`material-symbols-outlined text-[22px] text-primary transition-transform ${
+              expanded ? 'rotate-180' : ''
+            }`}
+          >
+            expand_more
+          </span>
+        </div>
+      </button>
+      <div
+        className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+          expanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+        }`}
+      >
+        <div className="overflow-hidden">
+          <p className="border-t border-surface-container px-4 pt-3 pb-4 text-sm leading-6 text-on-surface-variant">
+            {item.description}
+          </p>
+        </div>
+      </div>
+    </article>
+  );
+}
 
 export default function OutrosSection() {
+  const [openIndex, setOpenIndex] = useState(0);
+
   return (
-    <>
-    <section className="py-10 bg-slate-100" id="outros">
-        <div className="w-full min-w-0 max-w-full box-border px-5">
-          <div className="mb-10">
-            <h2 className="font-black text-3xl md:text-4xl text-start pl-4 text-slate-900 uppercase tracking-tight border-l-4 border-emerald-700">
-              Outros <span className="text-emerald-700">Serviços</span>
+    <section className="relative overflow-hidden bg-surface py-14 md:py-20" id="outros">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 left-[28%] right-0 hidden lg:block"
+        style={IMAGE_MASK}
+      >
+        <img
+          src="/Lateral.jpeg"
+          alt=""
+          className="h-full w-full object-cover object-[center_28%] opacity-[0.38]"
+        />
+      </div>
+
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-5">
+        <div className="max-w-xl text-left lg:max-w-[46%]">
+          <div className="mb-8">
+            <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.08em] text-primary">
+              Serviços Complementares
+            </p>
+            <h2 className="mb-3 text-[28px] leading-9 font-bold tracking-[-0.02em] text-on-surface md:text-[40px] md:leading-12">
+              Outros Serviços
             </h2>
-            <p className="text-slate-600 text-start text-xl leading-relaxed italic border-l-4 border-emerald-700 pl-6 mt-3">
+            <p className="max-w-xl text-base leading-6 text-on-surface-variant md:text-lg md:leading-7">
               Desenvolvemos competências críticas para garantir que sua equipe atue com segurança, responsabilidade e excelência operacional.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-            {/* Coluna esquerda: accordion em coluna única */}
-            <div className="flex flex-col gap-6">
-              {OUTROS_ITEMS.map((item) => (
-                <Accordion
-                  key={item.title}
-                  className="editorial-shadow"
-                  sx={{
-                    bgcolor: '#fff',
-                    border: '1px solid rgba(4, 120, 87, 0.12)',
-                    borderRadius: 2,
-                    overflow: 'hidden',
-                    '&:before': { display: 'none' },
-                    '&.Mui-expanded': { margin: 0 },
-                  }}
-                >
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon sx={{ color: '#047857' }} />}
-                    aria-controls={`${item.title}-content`}
-                    id={`${item.title}-header`}
-                    sx={{
-                      px: 2,
-                      py: 1.25,
-                      '& .MuiAccordionSummary-content': {
-                        margin: 0,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        gap: 2,
-                        minWidth: 0,
-                      },
-                    }}
-                  >
-                    <Box sx={{ minWidth: 0 }}>
-                      <Typography
-                        variant="subtitle2"
-                        sx={{
-                          fontWeight: 900,
-                          color: '#0f172a',
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.02em',
-                          lineHeight: 1.15,
-                        }}
-                        noWrap
-                        title={item.title}
-                      >
-                        {item.title}
-                      </Typography>
-                    </Box>
-
-                    <Chip
-                      label={item.tag}
-                      size="small"
-                      sx={{
-                        height: 24,
-                        fontSize: '0.625rem',
-                        fontWeight: 800,
-                        letterSpacing: '0.08em',
-                        textTransform: 'uppercase',
-                        bgcolor: 'rgba(16, 185, 129, 0.12)',
-                        color: '#047857',
-                        flexShrink: 0,
-                      }}
-                    />
-                  </AccordionSummary>
-                  <AccordionDetails sx={{ px: 2, pb: 2, pt: 0.25 }}>
-                    <Typography variant="body2" sx={{ color: '#475569', lineHeight: 1.6 }}>
-                      {item.description}
-                    </Typography>
-                  </AccordionDetails>
-                </Accordion>
-              ))}
-            </div>
-
-            {/* Coluna direita: imagem com glow */}
-            <div className="relative overflow-hidden rounded-3xl bg-slate-100 lg:sticky lg:top-28">
-              <img
-                alt=""
-                src="/Lateral.jpeg"
-                className="h-128 w-full object-cover lg:h-136"
+          <div className="space-y-3">
+            {OUTROS_ITEMS.map((item, index) => (
+              <OutrosExpandableItem
+                key={item.title}
+                item={item}
+                expanded={openIndex === index}
+                onToggle={() =>
+                  setOpenIndex((current) => (current === index ? -1 : index))
+                }
               />
-              {/* Mesma leitura do restante do site: slate-100 nas bordas */}
-              <div className="pointer-events-none absolute inset-0 bg-linear-to-l from-slate-100 via-transparent to-transparent" />
-              <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-slate-100 via-transparent to-transparent" />
-              <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-slate-100 via-transparent to-transparent" />
-              <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-slate-100 via-transparent to-transparent" />
-            </div>
+            ))}
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

@@ -1,10 +1,4 @@
-import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import Box from '@mui/material/Box';
-import Chip from '@mui/material/Chip';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useState } from 'react';
 
 const DOCUMENT_ITEMS = [
   {
@@ -43,103 +37,114 @@ const DOCUMENT_ITEMS = [
   },
 ];
 
-export default function DocumentosSection() {
+/**
+ * Plano de fundo discreto: imagem larga à direita com fade longo
+ * da esquerda (transparente) → direita (visível), sem vão branco.
+ */
+const IMAGE_MASK = {
+  WebkitMaskImage: [
+    'linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.2) 12%, rgba(0,0,0,0.55) 38%, black 62%, black 100%)',
+    'linear-gradient(180deg, transparent 0%, black 8%, black 92%, transparent 100%)',
+  ].join(', '),
+  maskImage: [
+    'linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.2) 12%, rgba(0,0,0,0.55) 38%, black 62%, black 100%)',
+    'linear-gradient(180deg, transparent 0%, black 8%, black 92%, transparent 100%)',
+  ].join(', '),
+  WebkitMaskComposite: 'source-in',
+  maskComposite: 'intersect',
+};
+
+function DocumentExpandableItem({ item, expanded, onToggle }) {
   return (
-    <section className="py-10 bg-slate-100" id="documents">
-      <div className="w-full min-w-0 max-w-full box-border px-5">
-        <div className="mb-10">
-          <h2 className="font-black text-3xl md:text-4xl text-start pl-4 text-slate-900 uppercase tracking-tight border-l-4 border-emerald-700">
-            Documentação <span className="text-emerald-700">Técnica & Legal</span>
-          </h2>
-          <p className="text-slate-600 text-start text-xl leading-relaxed italic border-l-4 border-emerald-700 pl-6 mt-3">
-            Soluções rigorosas para conformidade normativa e gestão de riscos ocupacionais com precisão técnica e jurídica.
+    <article
+      className={`overflow-hidden rounded-2xl border bg-white shadow-sm transition-all ${
+        expanded
+          ? 'border-primary/35 shadow-md'
+          : 'border-outline-variant/40 hover:border-primary/25'
+      }`}
+    >
+      <button
+        type="button"
+        onClick={onToggle}
+        className="flex w-full items-center justify-between gap-3 px-4 py-3.5 text-left"
+        aria-expanded={expanded}
+      >
+        <div className="min-w-0">
+          <p className="truncate text-sm font-bold tracking-tight text-on-surface uppercase md:text-[15px]">
+            {item.title}
           </p>
         </div>
+        <div className="flex shrink-0 items-center gap-2">
+          <span className="rounded-md bg-primary/10 px-2 py-1 text-[10px] font-bold tracking-[0.08em] text-primary uppercase">
+            {item.tag}
+          </span>
+          <span
+            className={`material-symbols-outlined text-[22px] text-primary transition-transform ${
+              expanded ? 'rotate-180' : ''
+            }`}
+          >
+            expand_more
+          </span>
+        </div>
+      </button>
+      <div
+        className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+          expanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+        }`}
+      >
+        <div className="overflow-hidden">
+          <p className="border-t border-surface-container px-4 pt-3 pb-4 text-sm leading-6 text-on-surface-variant">
+            {item.description}
+          </p>
+        </div>
+      </div>
+    </article>
+  );
+}
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-          <div className="lg:col-span-2 flex flex-col gap-6">
-            {DOCUMENT_ITEMS.map((item) => (
-              <Accordion
-                key={item.title}
-                className="editorial-shadow"
-                sx={{
-                  bgcolor: '#fff',
-                  border: '1px solid rgba(4, 120, 87, 0.12)',
-                  borderRadius: 2,
-                  overflow: 'hidden',
-                  '&:before': { display: 'none' },
-                  '&.Mui-expanded': { margin: 0 },
-                }}
-              >
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon sx={{ color: '#047857' }} />}
-                  aria-controls={`${item.title}-content`}
-                  id={`${item.title}-header`}
-                  sx={{
-                    px: 2,
-                    py: 1.25,
-                    '& .MuiAccordionSummary-content': {
-                      margin: 0,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      gap: 2,
-                      minWidth: 0,
-                    },
-                  }}
-                >
-                  <Box sx={{ minWidth: 0 }}>
-                    <Typography
-                      variant="subtitle2"
-                      sx={{
-                        fontWeight: 900,
-                        color: '#0f172a',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.02em',
-                        lineHeight: 1.15,
-                      }}
-                      noWrap
-                      title={item.title}
-                    >
-                      {item.title}
-                    </Typography>
-                  </Box>
+export default function DocumentosSection() {
+  const [openIndex, setOpenIndex] = useState(0);
 
-                  <Chip
-                    label={item.tag}
-                    size="small"
-                    sx={{
-                      height: 24,
-                      fontSize: '0.625rem',
-                      fontWeight: 800,
-                      letterSpacing: '0.08em',
-                      textTransform: 'uppercase',
-                      bgcolor: 'rgba(16, 185, 129, 0.12)',
-                      color: '#047857',
-                      flexShrink: 0,
-                    }}
-                  />
-                </AccordionSummary>
-                <AccordionDetails sx={{ px: 2, pb: 2, pt: 0.25 }}>
-                  <Typography variant="body2" sx={{ color: '#475569', lineHeight: 1.6 }}>
-                    {item.description}
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-            ))}
+  return (
+    <section className="relative overflow-hidden bg-surface py-14 md:py-20" id="documents">
+      {/* Fundo discreto: ocupa ~2/3 à direita e atravessa atrás do conteúdo */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 left-[28%] right-0 hidden lg:block"
+        style={IMAGE_MASK}
+      >
+        <img
+          src="/Lateral1.jpeg"
+          alt=""
+          className="h-full w-full object-cover object-[center_28%] opacity-[0.38]"
+        />
+      </div>
+
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-5">
+        <div className="max-w-xl text-left lg:max-w-[46%]">
+          <div className="mb-8">
+            <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.08em] text-primary">
+              Documentação Técnica
+            </p>
+            <h2 className="mb-3 text-[28px] leading-9 font-bold tracking-[-0.02em] text-on-surface md:text-[40px] md:leading-12">
+              Documentação Técnica & Legal
+            </h2>
+            <p className="max-w-xl text-base leading-6 text-on-surface-variant md:text-lg md:leading-7">
+              Soluções rigorosas para conformidade normativa e gestão de riscos ocupacionais com precisão técnica e jurídica.
+            </p>
           </div>
 
-          {/* Mesmo padrão visual de OutrosSection; imagem Lateral1 */}
-          <div className="hidden md:block lg:col-span-1 relative overflow-hidden bg-slate-100 lg:sticky lg:top-28">
-            <img
-              alt=""
-              src="/Lateral1.jpeg"
-              className="h-90 w-full object-cover lg:h-110"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-linear-to-l from-slate-100 via-transparent to-transparent" />
-            <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-slate-100 via-transparent to-transparent" />
-            <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-slate-100 via-transparent to-transparent" />
-            <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-slate-100 via-transparent to-transparent" />
+          <div className="space-y-3">
+            {DOCUMENT_ITEMS.map((item, index) => (
+              <DocumentExpandableItem
+                key={item.title}
+                item={item}
+                expanded={openIndex === index}
+                onToggle={() =>
+                  setOpenIndex((current) => (current === index ? -1 : index))
+                }
+              />
+            ))}
           </div>
         </div>
       </div>

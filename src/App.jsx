@@ -6,8 +6,8 @@ import TreinamentosSection from './components/TreinamentosSection'
 import OutrosSection from './components/OutrosSection'
 import SobreSection from './components/SobreSection'
 import ContatoSection from './components/ContatoSection'
-import ContactSpeedDial from './components/ContactSpeedDial'
 import Footer from './components/Footer'
+import MobileBottomNav from './components/MobileBottomNav'
 
 export default function App() {
   return (
@@ -22,7 +22,7 @@ export default function App() {
         <ContatoSection />
       </main>
       <Footer />
-      <ContactSpeedDial />
+      <MobileBottomNav />
     </>
   );
 }

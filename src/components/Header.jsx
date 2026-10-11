@@ -1,18 +1,43 @@
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import { WHATSAPP_URL } from '../lib/contact';
+
+const NAV_LINKS = [
+  { href: '#documents', label: 'Documentos' },
+  { href: '#training', label: 'Treinamentos' },
+  { href: '#outros', label: 'Serviços' },
+  { href: '#about', label: 'Sobre' },
+  { href: '#contact', label: 'Contato' },
+];
+
 export default function Header() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 min-w-0 max-w-full bg-slate-100/80 backdrop-blur-lg border-b border-emerald-700/40">
-      <div className="w-full min-w-0 max-w-full flex justify-between items-center py-2 pl-5 pr-15">
-        <img className="ml-5 h-12" src="/LogoPuro.svg" alt="PUROSEG" />
-        <nav className="hidden md:flex items-center space-x-10">
-          <a className="text-sm font-semibold text-slate-900/70 hover:text-emerald-700 hover:border-b-2 border-emerald-700 transition-colors uppercase tracking-widest" href="#documents">Documentos</a>
-          <a className="text-sm font-semibold text-slate-900/70 hover:text-emerald-700 hover:border-b-2 border-emerald-700 transition-colors uppercase tracking-widest" href="#training">Treinamentos</a>
-          <a className="text-sm font-semibold text-slate-900/70 hover:text-emerald-700 hover:border-b-2 border-emerald-700 transition-colors uppercase tracking-widest" href="#outros">Outros Serviços</a>
-          <a className="text-sm font-semibold text-slate-900/70 hover:text-emerald-700 hover:border-b-2 border-emerald-700 transition-colors uppercase tracking-widest" href="#about">Sobre</a>
-          <a className="text-sm font-semibold text-slate-900/70 hover:text-emerald-700 hover:border-b-2 border-emerald-700 transition-colors uppercase tracking-widest" href="#contact">Contato</a>
+    <header className="fixed top-0 right-0 left-0 z-50 border-b border-outline-variant/30 bg-surface/90 backdrop-blur-lg">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-5 py-3">
+        <a href="#top" className="flex items-center gap-2">
+          <img src="/LogoPuro.svg" alt="PUROSEG" className="h-10 w-auto" />
+        </a>
+
+        <nav className="hidden items-center gap-7 lg:flex">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-sm font-semibold text-on-surface-variant transition-colors hover:text-primary"
+            >
+              {link.label}
+            </a>
+          ))}
         </nav>
-        {/* <button className="mr-5 bg-emerald-700 text-white px-6 py-2.5 text-xs font-bold tracking-widest uppercase hover:bg-emerald-600 transition-all rounded-sm">
-            Falar com Especialista
-          </button> */}
+
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-2.5 text-sm font-bold text-on-primary transition-colors hover:bg-primary-hover"
+        >
+          <WhatsAppIcon sx={{ fontSize: 20 }} />
+          Contato
+        </a>
       </div>
     </header>
   );
